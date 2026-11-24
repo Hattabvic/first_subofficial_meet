@@ -267,14 +267,14 @@ export default function Stage3_Scratch({ onNext }) {
           <img src={bowPinkImg} alt="bow" className="w-4 h-auto" />
           <span>الخطوة الثالثة </span>
         </div>
-        <h1 className="text-2xl font-black text-rose-charcoal font-marhey leading-relaxed">
+        <h1 className="text-xl sm:text-2xl font-black text-rose-charcoal font-marhey leading-relaxed">
          هانت قربت توصل
         </h1>
       
       </div>
 
       {/* ── Scratch Card Outer Container ── */}
-      <div className="bg-white/90 backdrop-blur-xl rounded-4xl border-2 border-blush-200/90 shadow-card-glow p-5 relative overflow-hidden">
+      <div className="bg-white/90 backdrop-blur-xl rounded-4xl border-2 border-blush-200/90 shadow-card-glow p-4 sm:p-5 relative overflow-hidden">
         {/* Decorative corner stars */}
         <div className="flex justify-between items-center px-1 mb-3 text-xs font-alexandria font-semibold text-blush-600">
           <span className="flex items-center gap-1">
@@ -288,7 +288,7 @@ export default function Stage3_Scratch({ onNext }) {
         {/* ── Interactive Canvas Frame ── */}
         <div
           ref={containerRef}
-          className="relative w-full h-[220px] rounded-3xl overflow-hidden border-2 border-blush-300/80 shadow-inner select-none"
+          className="relative w-full h-[180px] sm:h-[220px] rounded-3xl overflow-hidden border-2 border-blush-300/80 shadow-inner select-none"
           style={{ touchAction: 'none' }}
         >
           {/* ── Secret Content Underneath ── */}
@@ -336,7 +336,7 @@ export default function Stage3_Scratch({ onNext }) {
           {/* ── Hint Animation ── */}
           {hintVisible && !isRevealed && (
             <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
-              <div className="bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[11px] font-alexandria font-semibold text-rose-charcoal/80 border border-blush-200 shadow-sm animate-pulse flex items-center gap-1.5">
+              <div className="bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-alexandria font-semibold text-rose-charcoal/80 border border-blush-200 shadow-sm animate-pulse flex items-center gap-1.5">
                 <span>👆 اخربشي بإصبعك هنا</span>
               </div>
             </div>

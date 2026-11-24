@@ -32,12 +32,12 @@ export default function Stage1_Terms({ onNext }) {
         <img
           src={kittyHeadImg}
           alt="Hello Kitty"
-          className="w-36 h-auto drop-shadow-md floating-element transform hover:scale-105 transition-transform duration-300"
+          className="w-28 sm:w-36 h-auto drop-shadow-md floating-element transform hover:scale-105 transition-transform duration-300"
         />
       </div>
 
       {/* ── Main Contract Card ── */}
-      <div className="bg-white/90 backdrop-blur-xl rounded-4xl border border-blush-200/80 shadow-card-glow overflow-hidden pt-9 px-6 pb-6 relative">
+      <div className="bg-white/90 backdrop-blur-xl rounded-4xl border border-blush-200/80 shadow-card-glow overflow-hidden pt-9 px-4 pb-5 sm:px-6 sm:pb-6 relative">
         {/* Decorative corner accent */}
         <div className="absolute top-3 left-4 opacity-70">
           <img src={bowPinkImg} alt="bow" className="w-7 h-auto" />
@@ -51,7 +51,7 @@ export default function Stage1_Terms({ onNext }) {
           <span className="inline-block px-3.5 py-1 rounded-full text-[11px] font-semibold font-alexandria bg-blush-100/90 text-blush-700 mb-2.5">
             الخطوة الأولى 🎀
           </span>
-          <h1 className="text-xl font-extrabold text-rose-charcoal font-marhey leading-relaxed">
+          <h1 className="text-lg sm:text-xl font-extrabold text-rose-charcoal font-marhey leading-snug sm:leading-relaxed">
             الشروط للموافقة على الدعوة 📜🎀
           </h1>
           <p className="mt-1.5 text-xs text-rose-charcoal/70 font-alexandria font-normal">
@@ -67,14 +67,14 @@ export default function Stage1_Terms({ onNext }) {
               <div
                 key={term.id}
                 onClick={() => toggle(term.id)}
-                className={`flex items-center justify-between p-3.5 rounded-2xl border transition-all duration-200 cursor-pointer select-none active:scale-[0.98] ${
+                className={`flex min-h-12 items-center justify-between p-3 sm:p-3.5 rounded-2xl border transition-all duration-200 cursor-pointer select-none active:scale-[0.98] ${
                   isChecked
                     ? 'bg-gradient-to-r from-blush-100/80 to-white/90 border-blush-400 shadow-sm'
                     : 'bg-white/60 hover:bg-white/90 border-blush-100 hover:border-blush-200'
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <span className="text-2xl">{term.emoji}</span>
+                  <span className="text-xl sm:text-2xl">{term.emoji}</span>
                   <div>
                     <h3 className={`font-alexandria font-bold text-sm transition-colors ${
                       isChecked ? 'text-blush-700 line-through opacity-80' : 'text-rose-charcoal'
@@ -100,7 +100,7 @@ export default function Stage1_Terms({ onNext }) {
           })}
 
           {/* ── Term 4: Interactive Makeup Slider ("جمال رباني") ── */}
-          <div className={`p-4 rounded-2xl border transition-all duration-300 ${
+          <div className={`p-3 sm:p-4 rounded-2xl border transition-all duration-300 ${
             isMakeupPassed
               ? 'bg-gradient-to-br from-blush-100/70 via-white to-emerald-50/40 border-blush-400 shadow-sm'
               : 'bg-white/80 border-blush-200 shadow-sm'
@@ -161,13 +161,13 @@ export default function Stage1_Terms({ onNext }) {
                 max="100"
                 value={makeupLevel}
                 onChange={(e) => setMakeupLevel(Number(e.target.value))}
-                className="w-full h-2.5 bg-blush-200 rounded-lg appearance-none cursor-pointer accent-blush-500"
+                className="w-full h-3 bg-blush-200 rounded-lg appearance-none cursor-pointer accent-blush-500 touch-pan-y"
               />
 
-              <div className="flex justify-between text-[10px] font-alexandria text-rose-charcoal/40 mt-1 px-0.5">
-                <span>100% (أوفر)</span>
-                <span className="font-bold text-blush-600">50% (الحد الأقصى)</span>
-                <span>1% (طبيعي 100%)</span>
+              <div className="grid grid-cols-3 gap-1 text-[9px] leading-4 font-alexandria text-rose-charcoal/50 mt-1 px-0.5">
+                <span className="text-right">100% (أوفر)</span>
+                <span className="font-bold text-blush-600 text-center">50% (الحد الأقصى)</span>
+                <span className="text-left">1% (طبيعي 100%)</span>
               </div>
             </div>
 
@@ -212,7 +212,7 @@ export default function Stage1_Terms({ onNext }) {
         <button
           onClick={allChecked ? onNext : undefined}
           disabled={!allChecked}
-          className={`w-full mt-6 py-3.5 rounded-2xl font-alexandria font-bold text-sm flex items-center justify-center gap-2 transition-all duration-300 ${
+          className={`w-full min-h-12 mt-6 py-3 rounded-2xl font-alexandria font-bold text-sm flex items-center justify-center gap-2 transition-all duration-300 ${
             allChecked
               ? 'bg-gradient-to-r from-blush-500 via-blush-500 to-blush-400 text-white shadow-blush-md hover:shadow-blush-lg active:scale-95 btn-pulse'
               : 'bg-blush-200/70 text-blush-400/80 cursor-not-allowed'

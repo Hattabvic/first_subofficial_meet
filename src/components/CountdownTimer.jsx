@@ -35,7 +35,7 @@ export default function CountdownTimer() {
   return (
     <div className="bg-white/90 backdrop-blur-md rounded-3xl p-4 border border-blush-200/90 shadow-sm mt-5">
       {/* Header */}
-      <div className="flex items-center justify-between mb-3 px-1">
+      <div className="flex flex-col min-[380px]:flex-row min-[380px]:items-center justify-between gap-2 mb-3 px-1">
         <span className="text-xs font-alexandria font-bold text-rose-charcoal flex items-center gap-1.5">
           <Clock size={14} className="text-blush-500" />
           <span>الوقت المتبقي حتى اللقاء</span>
@@ -46,16 +46,16 @@ export default function CountdownTimer() {
       </div>
 
       {/* Grid of countdown boxes */}
-      <div className="grid grid-cols-4 gap-2 text-center">
+      <div className="grid grid-cols-4 gap-1.5 min-[380px]:gap-2 text-center">
         {units.map((u, i) => (
           <div
             key={i}
-            className="bg-gradient-to-b from-blush-50 to-white rounded-2xl p-2 border border-blush-100 shadow-sm flex flex-col items-center justify-center"
+            className="bg-gradient-to-b from-blush-50 to-white rounded-2xl p-1.5 min-[380px]:p-2 border border-blush-100 shadow-sm flex flex-col items-center justify-center"
           >
-            <span className="text-xl sm:text-2xl font-black font-alexandria text-blush-600 tracking-tight leading-none">
+            <span className="text-lg min-[380px]:text-xl sm:text-2xl font-black font-alexandria text-blush-600 tracking-tight leading-none">
               {String(u.value).padStart(2, '0')}
             </span>
-            <span className="text-[10px] font-alexandria text-rose-charcoal/60 font-medium mt-1">
+            <span className="text-[9px] min-[380px]:text-[10px] font-alexandria text-rose-charcoal/60 font-medium mt-1">
               {u.label}
             </span>
           </div>

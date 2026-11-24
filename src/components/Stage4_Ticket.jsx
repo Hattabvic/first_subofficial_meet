@@ -111,7 +111,7 @@ export default function Stage4_Ticket() {
         className="bg-white rounded-4xl border-2 border-blush-200/90 shadow-card-glow overflow-hidden relative"
       >
         {/* ── Top Header Section (Pink Luxury Banner) ── */}
-        <div className="bg-gradient-to-br from-blush-500 via-blush-400 to-blush-300 p-6 text-center text-white relative overflow-hidden">
+        <div className="bg-gradient-to-br from-blush-500 via-blush-400 to-blush-300 p-4 sm:p-6 text-center text-white relative overflow-hidden">
           {/* Subtle light rings */}
           <div className="absolute -top-10 -left-10 w-32 h-32 bg-white/15 rounded-full blur-xl pointer-events-none" />
           <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-white/15 rounded-full blur-xl pointer-events-none" />
@@ -121,7 +121,7 @@ export default function Stage4_Ticket() {
             <img
               src={kittyCameraImg}
               alt="Hello Kitty with Camera"
-              className="w-24 h-auto drop-shadow-md floating-element"
+              className="w-20 sm:w-24 h-auto drop-shadow-md floating-element"
             />
           </div>
 
@@ -131,7 +131,7 @@ export default function Stage4_Ticket() {
           </div>
 
           {/* Title */}
-          <h1 className="text-2xl font-black font-marhey tracking-wide text-white drop-shadow-sm">
+          <h1 className="text-xl sm:text-2xl font-black font-marhey tracking-wide text-white drop-shadow-sm">
             Special ticket
           </h1>
           <p className="text-xs font-alexandria text-white/90 font-semibold tracking-wider mt-0.5">
@@ -150,10 +150,10 @@ export default function Stage4_Ticket() {
         </div>
 
         {/* ── Ticket Body / Details ── */}
-        <div className="px-6 py-4 bg-gradient-to-b from-blush-50/40 to-white">
-          <div className="grid grid-cols-2 gap-4">
+        <div className="px-4 sm:px-6 py-4 bg-gradient-to-b from-blush-50/40 to-white">
+          <div className="grid grid-cols-1 min-[380px]:grid-cols-2 gap-3 sm:gap-4">
             {/* Date */}
-            <div className="bg-white/80 p-3.5 rounded-2xl border border-blush-100 shadow-sm">
+            <div className="bg-white/80 p-3 sm:p-3.5 rounded-2xl border border-blush-100 shadow-sm">
               <div className="flex items-center gap-1.5 text-blush-500 text-[11px] font-alexandria font-semibold mb-1">
                 <Calendar size={13} />
                 <span>اليوم والتاريخ</span>
@@ -167,7 +167,7 @@ export default function Stage4_Ticket() {
             </div>
 
             {/* Time */}
-            <div className="bg-white/80 p-3.5 rounded-2xl border border-blush-100 shadow-sm">
+            <div className="bg-white/80 p-3 sm:p-3.5 rounded-2xl border border-blush-100 shadow-sm">
               <div className="flex items-center gap-1.5 text-blush-500 text-[11px] font-alexandria font-semibold mb-1">
                 <Clock size={13} />
                 <span>الوقت المحدد</span>
@@ -214,7 +214,7 @@ export default function Stage4_Ticket() {
         </div>
 
         {/* ── Ticket Footer Stub ── */}
-        <div className="px-6 py-4 bg-blush-50/50 text-center">
+        <div className="px-4 sm:px-6 py-4 bg-blush-50/50 text-center">
           {/* Barcode graphic */}
           <BarcodePattern />
 

@@ -21,8 +21,8 @@ export default function SecretEnvelope() {
         onClick={() => !isOpen && setIsOpen(true)}
         className={`relative w-full rounded-3xl transition-all duration-500 border-2 shadow-card-glow cursor-pointer select-none overflow-hidden ${
           isOpen
-            ? "bg-gradient-to-b from-blush-50 via-white to-blush-50 border-blush-300 p-6"
-            : "bg-gradient-to-br from-blush-200 via-blush-100 to-blush-200 hover:from-blush-100 hover:to-blush-200 border-blush-300 p-5 active:scale-98"
+            ? "bg-gradient-to-b from-blush-50 via-white to-blush-50 border-blush-300 p-4 sm:p-6"
+            : "bg-gradient-to-br from-blush-200 via-blush-100 to-blush-200 hover:from-blush-100 hover:to-blush-200 border-blush-300 p-4 sm:p-5 active:scale-98"
         }`}
       >
         {!isOpen ? (
@@ -38,7 +38,7 @@ export default function SecretEnvelope() {
               </span>
             </div>
 
-            <h4 className="font-marhey font-bold text-base text-rose-charcoal mt-1">
+            <h4 className="font-marhey font-bold text-sm sm:text-base text-rose-charcoal mt-1">
               في كلمة أخيرة ليكي هنا.. 🎀
             </h4>
             <p className="text-[11px] font-alexandria text-blush-600 font-medium mt-1 flex items-center gap-1">
@@ -74,7 +74,7 @@ export default function SecretEnvelope() {
             </div>
 
             {/* Letter Content Card */}
-            <div className="bg-white/95 rounded-2xl p-5 border border-blush-200/90 shadow-sm text-center">
+            <div className="bg-white/95 rounded-2xl p-4 sm:p-5 border border-blush-200/90 shadow-sm text-center">
               <p className="font-alexandria font-semibold text-xs leading-relaxed text-rose-charcoal/90"></p>
 
               <div className="mt-4 pt-3 border-t border-blush-100 flex items-center justify-center gap-1.5 text-blush-600 text-xs font-marhey">

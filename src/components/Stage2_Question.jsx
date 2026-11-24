@@ -12,6 +12,16 @@ const EVASIVE_LABELS = [
   'خلاص تمام شكلي لبست! ',
 ];
 
+function randomOffset(maxDistance, minDistance) {
+  if (maxDistance <= 0) return 0;
+
+  const minimum = Math.min(minDistance, maxDistance);
+  const offset = (Math.random() * 2 - 1) * maxDistance;
+  return Math.abs(offset) < minimum
+    ? (offset >= 0 ? minimum : -minimum)
+    : offset;
+}
+
 export default function Stage2_Question({ onNext }) {
   const [labelIdx, setLabelIdx]         = useState(-1);
   const [btnPos, setBtnPos]             = useState({ x: 0, y: 0 });
@@ -55,18 +65,13 @@ export default function Stage2_Question({ onNext }) {
       const btnRect  = btnRef.current.getBoundingClientRect();
 
       // Available margins
-      const maxDeltaX = (zoneRect.width - btnRect.width) / 2 - 10;
-      const maxDeltaY = 55; // vertical range
+      const maxDeltaX = Math.max(0, (zoneRect.width - btnRect.width) / 2 - 10);
+      const maxDeltaY = Math.max(0, (zoneRect.height - btnRect.height) / 2 - 10);
 
-      // Pick a random offset that is noticeable
-      let rx = (Math.random() * 2 - 1) * maxDeltaX;
-      let ry = (Math.random() * 2 - 1) * maxDeltaY;
-
-      // Ensure minimum movement distance
-      if (Math.abs(rx) < 40) rx = rx >= 0 ? 50 : -50;
-      if (Math.abs(ry) < 20) ry = ry >= 0 ? 30 : -30;
-
-      setBtnPos({ x: rx, y: ry });
+      setBtnPos({
+        x: randomOffset(maxDeltaX, 40),
+        y: randomOffset(maxDeltaY, 20),
+      });
     }
 
     // Gentle haptic feedback if on mobile
@@ -92,7 +97,7 @@ export default function Stage2_Question({ onNext }) {
       </div>
 
       {/* ── Main Question Card ── */}
-      <div className="bg-white/90 backdrop-blur-xl rounded-4xl border border-blush-200/90 shadow-card-glow p-6 sm:p-7 relative overflow-hidden">
+      <div className="bg-white/90 backdrop-blur-xl rounded-4xl border border-blush-200/90 shadow-card-glow p-4 sm:p-6 relative overflow-hidden">
         {/* Glow corner circles */}
         <div className="absolute -top-12 -right-12 w-32 h-32 bg-blush-200/50 rounded-full blur-2xl pointer-events-none" />
         <div className="absolute -bottom-12 -left-12 w-32 h-32 bg-blush-300/40 rounded-full blur-2xl pointer-events-none" />
@@ -100,7 +105,7 @@ export default function Stage2_Question({ onNext }) {
         {/* ── Header with Tom Video (WebM / MP4 Looping Animation) ── */}
         <div className="text-center mt-1 mb-6">
           {/* Animated video container */}
-          <div className="w-full max-w-[240px] h-48 mx-auto mb-3.5 rounded-3xl overflow-hidden border-2 border-blush-300/90 shadow-md bg-white flex items-center justify-center p-1">
+          <div className="w-full max-w-[200px] sm:max-w-[240px] h-40 sm:h-48 mx-auto mb-3.5 rounded-3xl overflow-hidden border-2 border-blush-300/90 shadow-md bg-white flex items-center justify-center p-1">
             <video
               autoPlay
               loop
@@ -118,7 +123,7 @@ export default function Stage2_Question({ onNext }) {
             </video>
           </div>
 
-          <h1 className="text-2xl font-black text-rose-charcoal font-marhey leading-relaxed">
+          <h1 className="text-xl sm:text-2xl font-black text-rose-charcoal font-marhey leading-relaxed">
             خطوة عشان ابقي واضح اهو
           </h1>
           <p className="mt-1.5 text-xs text-rose-charcoal/70 font-alexandria leading-relaxed max-w-xs mx-auto">
@@ -132,7 +137,7 @@ export default function Stage2_Question({ onNext }) {
             type="button"
             onClick={handleNotSureClick}
             onTouchStart={handleNotSureClick}
-            className={`w-full py-4 px-6 rounded-2xl font-alexandria font-bold text-sm text-white select-none
+            className={`w-full min-h-12 py-3.5 px-4 sm:px-6 rounded-2xl font-alexandria font-bold text-sm text-white select-none
                        bg-gradient-to-r from-blush-400 via-blush-400 to-blush-300
                        shadow-sm hover:opacity-90 active:scale-[0.98]
                        flex items-center justify-center gap-2.5 transition-all duration-200 ${
@@ -165,7 +170,7 @@ export default function Stage2_Question({ onNext }) {
         {/* ── Choice 2: Evasive Playful Button (Moves on Tap/Click) ── */}
         <div
           ref={zoneRef}
-          className="relative min-h-[120px] flex flex-col items-center justify-center p-2 rounded-2xl bg-blush-50/50 border border-blush-100/80"
+          className="relative min-h-[120px] flex flex-col items-center justify-center p-2 rounded-2xl bg-blush-50/50 border border-blush-100/80 overflow-hidden"
         >
           <button
             ref={btnRef}
@@ -179,7 +184,7 @@ export default function Stage2_Question({ onNext }) {
               transform: `translate(${btnPos.x}px, ${btnPos.y}px)`,
               transition: 'transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1)',
             }}
-            className={`py-3.5 px-6 rounded-2xl font-alexandria font-bold text-sm select-none shadow-sm transition-colors duration-200 flex items-center gap-2 ${
+            className={`min-h-12 py-3 px-4 sm:px-6 rounded-2xl font-alexandria font-bold text-sm select-none shadow-sm transition-colors duration-200 flex items-center gap-2 ${
               isFinal
                 ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-md animate-bounce'
                 : 'bg-white text-blush-600 border-2 border-blush-400 hover:bg-blush-50 active:bg-blush-100'

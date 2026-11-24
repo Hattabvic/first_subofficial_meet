@@ -21,30 +21,30 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-start py-5 px-3 select-none relative overflow-x-hidden">
+    <div className="app-shell flex flex-col items-center justify-start px-3 select-none relative overflow-x-hidden">
       {/* ── Ambient Floating Hearts & Petals Background ── */}
       <FloatingBackground />
 
       {/* ── Top Bar with Back Button & Progress Dots ── */}
-      <header className="w-full max-w-md mx-auto flex items-center justify-between mb-3 px-2 h-10 relative z-10">
+      <header className="w-full max-w-md mx-auto flex items-center justify-between mb-3 px-1 h-10 relative z-10">
         {/* Back button */}
         {stage > 0 ? (
           <button
             onClick={prev}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold font-alexandria
+            className="flex min-h-8 items-center gap-1.5 px-2 py-1.5 sm:px-3 rounded-full text-xs font-semibold font-alexandria
                        text-rose-charcoal/80 bg-white/70 hover:bg-white hover:text-blush-600 active:scale-95
                        shadow-sm border border-blush-200/60 backdrop-blur-md transition-all duration-200"
             aria-label="الرجوع للخطوة السابقة"
           >
             <ArrowRight size={14} className="stroke-[2.5]" />
-            <span>رجوع</span>
+            <span className="hidden sm:inline">رجوع</span>
           </button>
         ) : (
-          <div className="w-16" />
+          <div className="w-8 sm:w-16" />
         )}
 
         {/* Mini Step indicators */}
-        <div className="flex items-center gap-1.5 bg-white/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-blush-200/50 shadow-sm">
+        <div aria-label="التقدم بين المراحل" className="flex items-center gap-1 bg-white/60 backdrop-blur-md px-2.5 py-1 rounded-full border border-blush-200/50 shadow-sm">
           {stepLabels.map((lbl, idx) => {
             const isActive = stage === idx;
             const isDone   = stage > idx;
@@ -57,22 +57,29 @@ export default function App() {
                 }}
                 disabled={idx > stage}
                 title={lbl}
-                className={`transition-all duration-300 rounded-full flex items-center justify-center ${
+                aria-label={`المرحلة ${idx + 1}: ${lbl}`}
+                aria-current={isActive ? 'step' : undefined}
+                className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full"
+              >
+                <span className={`transition-all duration-300 rounded-full flex items-center justify-center ${
                   isActive
                     ? 'w-6 h-6 bg-gradient-to-r from-blush-500 to-blush-400 text-white text-[11px] font-bold shadow-sm'
                     : isDone
                     ? 'w-5 h-5 bg-blush-200 text-blush-700 text-[10px] font-medium hover:bg-blush-300'
                     : 'w-2 h-2 bg-blush-200/80'
-                }`}
-              >
-                {isActive ? (idx + 1) : isDone ? '✓' : ''}
+                }`}>
+                  {isActive ? (idx + 1) : isDone ? '✓' : ''}
+                </span>
               </button>
             );
           })}
+          <span className="whitespace-nowrap text-[10px] font-semibold text-blush-700 sm:hidden">
+            {stepLabels[stage]}
+          </span>
         </div>
 
         {/* Small top bow */}
-        <div className="w-16 flex justify-end items-center">
+        <div className="w-8 sm:w-16 flex justify-end items-center">
           <img src={bowPinkImg} alt="Bow" className="w-6 h-auto drop-shadow-sm opacity-80" />
         </div>
       </header>
@@ -86,7 +93,7 @@ export default function App() {
       </main>
 
       {/* ── Soft Footer ── */}
-      <footer className="mt-8 text-center relative z-10">
+      <footer className="mt-6 sm:mt-8 text-center relative z-10">
         <p className="text-xs text-blush-400 font-alexandria font-medium tracking-wide flex items-center justify-center gap-1.5 opacity-90">
           <span>صُنعت بكل حب ولطف</span>
           <img src={bowPinkImg} alt="bow" className="w-3.5 h-auto inline-block" />
